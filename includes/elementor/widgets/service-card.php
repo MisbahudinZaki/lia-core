@@ -64,6 +64,8 @@ class Lia_Service_Card_Widget extends Widget_Base {
             return;
         }
 
+        echo '<div class="service-content-wrapper">';
+
         while ( $query->have_posts() ) {
             $query->the_post();
 
@@ -100,6 +102,8 @@ class Lia_Service_Card_Widget extends Widget_Base {
 
             <?php
         }
+
+        echo '</div>';
 
         wp_reset_postdata();
     }
