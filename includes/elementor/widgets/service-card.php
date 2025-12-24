@@ -45,6 +45,19 @@ class Lia_Service_Card_Widget extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'posts_order',
+            [
+                'label'   => __( 'Order', 'lia-core' ),
+                'type'    => Controls_Manager::SELECT,
+                'default' => 'DESC',
+                'options' => [
+                    'DESC' => __( 'Newest First', 'lia-core' ),
+                    'ASC'  => __( 'Oldest First', 'lia-core' ),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -58,6 +71,8 @@ class Lia_Service_Card_Widget extends Widget_Base {
         $query = new WP_Query([
             'post_type'      => 'service',
             'posts_per_page' => $settings['posts_per_page'],
+            'orderby'        => 'date',
+            'order'          => $settings['posts_order'],
         ]);
 
         if ( ! $query->have_posts() ) {

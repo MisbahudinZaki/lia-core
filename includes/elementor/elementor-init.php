@@ -11,6 +11,14 @@ function lia_core_register_elementor_widgets( $widgets_manager ) {
     require_once LIA_CORE_PATH . 'includes/elementor/widgets/service-card.php';
 
     $widgets_manager->register( new \Lia_Service_Card_Widget() );
+
+    require_once LIA_CORE_PATH . 'includes/elementor/widgets/portfolio-list.php';
+
+    $widgets_manager->register( new \Lia_Portfolio_List_Widget() );
+
+    require_once LIA_CORE_PATH . 'includes/elementor/widgets/team-card.php';
+
+    $widgets_manager->register( new \Lia_Team_Card_Widget() );
 }
 add_action( 'elementor/widgets/register', 'lia_core_register_elementor_widgets' );
 
