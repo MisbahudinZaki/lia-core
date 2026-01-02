@@ -241,9 +241,9 @@ class Lia_Portfolio_List_Widget extends Widget_Base {
                             <p><?php echo esc_html( get_the_excerpt() ); ?></p>
                         <?php endif; ?>
                         
-                        <div class="portfolio-btn-wrapper">
+                        <div class="btn-rounded-wrapper">
                             <div>
-                                <div class="portfolio-btn">
+                                <div class="btn-rounded">
                                     <a href="<?php the_permalink(); ?>" class="button">
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>

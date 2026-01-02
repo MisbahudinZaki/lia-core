@@ -99,7 +99,7 @@ class Lia_Team_Card_Widget extends Widget_Base {
                         <h5><?php the_title(); ?></h5>
 
                         <?php if ( $position ) : ?>
-                            <span class="team-title">
+                            <span class="team-designation">
                                 <?php echo esc_html( $position ); ?>
                             </span>
                         <?php endif; ?>
