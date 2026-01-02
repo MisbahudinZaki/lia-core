@@ -26,6 +26,9 @@ function lia_core_register_elementor_widgets( $widgets_manager ) {
     require_once LIA_CORE_PATH . 'includes/elementor/widgets/about.php';
     $widgets_manager->register( new \Lia_About_Widget() );
 
+    require_once LIA_CORE_PATH . 'includes/elementor/widgets/achievement.php';
+    $widgets_manager->register( new \Lia_Achievement_Widget() );
+
 }
 add_action( 'elementor/widgets/register', 'lia_core_register_elementor_widgets' );
 
