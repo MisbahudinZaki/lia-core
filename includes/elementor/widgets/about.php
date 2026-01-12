@@ -36,11 +36,23 @@ class Lia_About_Widget extends Widget_Base {
         );
 
         $this->add_control(
+            'banner_background_image',
+            [
+                'label'       => __( 'About Banner Background Image', 'lia-core' ),
+                'type'        => Controls_Manager::MEDIA,
+                'default'     => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'description' => __( 'Set background image for the entire about banner section.', 'lia-core' ),
+            ]
+        );
+
+        $this->add_control(
             'sub_heading',
             [
                 'label'       => __( 'Sub Heading', 'lia-core' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'About', 'lia-core' ),
+                'default'     => __( 'Sub Heading Here...', 'lia-core' ),
                 'placeholder' => __( 'Enter sub heading', 'lia-core' ),
             ]
         );
@@ -50,7 +62,7 @@ class Lia_About_Widget extends Widget_Base {
             [
                 'label'       => __( 'Heading', 'lia-core' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'Your Partner in Digital Growth and Innovation', 'lia-core' ),
+                'default'     => __( 'Title Here...', 'lia-core' ),
                 'placeholder' => __( 'Enter main heading', 'lia-core' ),
             ]
         );
@@ -77,7 +89,7 @@ class Lia_About_Widget extends Widget_Base {
             [
                 'label'       => __( 'Description', 'lia-core' ),
                 'type'        => Controls_Manager::TEXTAREA,
-                'default'     => __( 'Pellentesque adipiscing commodo elit at. Facilisis sed odio morbi quis commodo odio. Porttitor massa id neque aliquam vestibulum morbi blandit. Lectus proin nibh nisl condimentum id. Aenean et tortor at risus. Vel pharetra vel turpis nunc eget lorem dolor.', 'lia-core' ),
+                'default'     => __( 'Description Here...', 'lia-core' ),
                 'placeholder' => __( 'Enter description', 'lia-core' ),
                 'rows'        => 5,
             ]
@@ -85,7 +97,7 @@ class Lia_About_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
-        // Left Column Content
+        // Left Column Content (tetap sama seperti sebelumnya)
         $this->start_controls_section(
             'section_left_column',
             [
@@ -153,7 +165,7 @@ class Lia_About_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
-        // Checklist Section
+        // Checklist Section (sama)
         $this->start_controls_section(
             'section_checklist',
             [
@@ -186,24 +198,6 @@ class Lia_About_Widget extends Widget_Base {
                     [
                         'item_text' => __( 'Condimentum lacinia quis vel eros', 'lia-core' ),
                     ],
-                    [
-                        'item_text' => __( 'Turpis cursus in hac habitasse', 'lia-core' ),
-                    ],
-                    [
-                        'item_text' => __( 'Et netus et malesuada fames', 'lia-core' ),
-                    ],
-                    [
-                        'item_text' => __( 'Amet purus gravida quis blandit', 'lia-core' ),
-                    ],
-                    [
-                        'item_text' => __( 'Condimentum lacinia quis vel eros', 'lia-core' ),
-                    ],
-                    [
-                        'item_text' => __( 'Turpis cursus in hac habitasse', 'lia-core' ),
-                    ],
-                    [
-                        'item_text' => __( 'Et netus et malesuada fames', 'lia-core' ),
-                    ],
                 ],
                 'title_field' => '{{{ item_text }}}',
             ]
@@ -211,7 +205,7 @@ class Lia_About_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
-        // Button Section
+        // Button Section (sama)
         $this->start_controls_section(
             'section_button',
             [
@@ -258,10 +252,16 @@ class Lia_About_Widget extends Widget_Base {
         $button_target = $settings['button_link']['is_external'] ? ' target="_blank"' : '';
         $button_nofollow = $settings['button_link']['nofollow'] ? ' rel="nofollow"' : '';
 
+        // Background image style
+        $bg_style = '';
+        if ( ! empty( $settings['banner_background_image']['url'] ) ) {
+            $bg_style = ' style="background-image: url(' . esc_url( $settings['banner_background_image']['url'] ) . ');"';
+        }
+
         ?>
-        <div class="section about-banner">
+        <div class="section about-banner"<?php echo $bg_style; ?>>
             <div class="hero-container">
-                <div class="row row-cols-xl-2 row-cols-1 lia-grid-gap-2">
+                <div class="row row-cols-lg-2 row-cols-1 lia-grid-gap-2">
                     
                     <!-- Left Column -->
                     <div class="col">
@@ -375,11 +375,17 @@ class Lia_About_Widget extends Widget_Base {
         // Split checklist items
         var item_count = settings.checklist_items.length;
         var half_count = Math.ceil(item_count / 2);
+
+        // Background image
+        var bg_style = '';
+        if ( settings.banner_background_image.url ) {
+            bg_style = ' style="background-image: url(' + settings.banner_background_image.url + ');"';
+        }
         #>
         
-        <div class="section about-banner">
+        <div class="section about-banner" {{{ bg_style }}}>
             <div class="hero-container">
-                <div class="row row-cols-xl-2 row-cols-1 lia-grid-gap-2">
+                <div class="row row-cols-lg-2 row-cols-1 lia-grid-gap-2">
                     
                     <!-- Left Column -->
                     <div class="col">

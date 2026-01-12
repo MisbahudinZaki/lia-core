@@ -130,7 +130,7 @@ class Lia_Achievement_Widget extends Widget_Base {
         <section class="section">
             <div class="hero-container">               
                 <div class="achievement-banner" <?php echo $banner_style; ?>>
-                    <div class="d-flex flex-column flex-xl-row position-relative z-2 w-100">
+                    <div class="d-flex flex-column flex-lg-row position-relative z-2 w-100">
         
                         <?php foreach ( $settings['items'] as $item ) : ?>
         
